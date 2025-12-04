@@ -4,8 +4,8 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon server",
-    "dev": "nodemon --watch --env-file=.env server"
+    "start": "node server",
+    "dev": "node --watch --env-file=.env server"
   },
   "author": "",
   "license": "ISC",

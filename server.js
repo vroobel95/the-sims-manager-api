@@ -22,5 +22,5 @@ app.use('/api/aspirations', aspirations);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server runs on http://localhost:${PORT}`);
+  console.log(`Server runs on port: ${PORT}`);
 });
