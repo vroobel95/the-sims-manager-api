@@ -17,6 +17,10 @@ export const pool = new Pool({
   },
 });
 
+app.get('/', (req, res) => {
+  res.send('The Sims Manager API is running');
+});
+
 // routes
 app.use('/api/aspirations', aspirations);
 
