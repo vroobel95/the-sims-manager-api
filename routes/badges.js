@@ -16,7 +16,7 @@ const storage = new CloudinaryStorage({
 
 router.get('/', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM badges');
+    const result = await pool.query('SELECT * FROM badges ORDER BY name asc');
     res.status(200).json(result.rows);
   } catch (error) {
     console.error(error);
