@@ -9,7 +9,7 @@ A backend API for managing The Sims game data, including aspirations and badges.
 - **Image Storage**: Cloudinary integration for storing aspiration and badge images
 - **CORS Support**: Configurable cross-origin requests for frontend integration
 - **PostgreSQL Database**: Persistent data storage
-- **Vercel Deployment**: Ready for deployment on Vercel
+- **Railway Deployment**: Ready for deployment on Railway
 
 ## Tech Stack
 
@@ -113,7 +113,6 @@ the-sims-manager-api/
 ├── server.js              # Main Express server configuration
 ├── cloudinary.js          # Cloudinary configuration
 ├── package.json           # Project dependencies and scripts
-├── vercel.json            # Vercel deployment configuration
 ├── routes/
 │   ├── aspirations.js     # Aspirations endpoints
 │   └── badges.js          # Badges endpoints
@@ -168,21 +167,23 @@ The API enforces CORS security:
 
 ## Deployment
 
-This project is configured for deployment on Vercel.
+This project is configured for deployment on Railway.
 
-### Deploy to Vercel
+### Deploy to Railway
 
 1. Push your code to a Git repository (GitHub, GitLab, or Bitbucket)
-2. Connect your repository to Vercel
-3. Add environment variables in Vercel dashboard
-4. Deploy
+2. Sign in to [Railway.app](https://railway.app)
+3. Create a new project and connect your repository
+4. Configure environment variables in the Railway dashboard:
+   - `DATABASE_URL`
+   - `UI_ORIGIN`
+   - `CLOUDINARY_CLOUD_NAME`
+   - `CLOUDINARY_API_KEY`
+   - `CLOUDINARY_API_SECRET`
+   - `PORT` (optional, Railway assigns a default)
+5. Deploy
 
-Or use Vercel CLI:
-
-```bash
-npm install -g vercel
-vercel
-```
+Railway will automatically detect the Node.js project and build it based on `package.json`.
 
 ## Error Handling
 
