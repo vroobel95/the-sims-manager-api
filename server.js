@@ -3,6 +3,7 @@ import 'dotenv/config';
 import express from 'express';
 import pkg from 'pg';
 import aspirations from './routes/aspirations.js';
+import badges from './routes/badges.js';
 
 const { Pool } = pkg;
 
@@ -33,8 +34,9 @@ app.get('/', (req, res) => {
 
 // routes
 app.use('/api/aspirations', aspirations);
+app.use('/api/badges', badges);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server runs on port: ${PORT}`);
+  console.log(`Server runs on http://localhost:${PORT}`);
 });

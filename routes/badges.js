@@ -8,7 +8,7 @@ import { CloudinaryStorage } from 'multer-storage-cloudinary';
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: 'aspirations',
+    folder: 'badges',
     format: async () => 'png',
     public_id: (req, file) => `${Date.now()}-${file.originalname}`,
   },
@@ -16,7 +16,7 @@ const storage = new CloudinaryStorage({
 
 router.get('/', async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM aspirations');
+    const result = await pool.query('SELECT * FROM badges');
     res.status(200).json(result.rows);
   } catch (error) {
     console.error(error);
