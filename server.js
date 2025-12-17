@@ -7,13 +7,23 @@ import aspirations from './routes/aspirations.js';
 const { Pool } = pkg;
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (process.env.UI_ORIGIN === origin) {
+        return callback(null, true);
+      }
+      return callback(new Error('Not allowed by CORS'));
+    },
+  })
+);
 app.use(express.json());
 
 export const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
-    rejectUnauthorized: false, // Neon wymaga SSL
+    rejectUnauthorized: false,
   },
 });
 
