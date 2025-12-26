@@ -6,6 +6,7 @@ A backend API for managing The Sims game data, including aspirations and badges.
 
 - **Aspirations Management**: Retrieve and manage game aspirations
 - **Badges Management**: Retrieve and manage achievement badges
+- **Households Management**: Create, retrieve, update, and delete household data
 - **Image Storage**: Cloudinary integration for storing aspiration and badge images
 - **CORS Support**: Configurable cross-origin requests for frontend integration
 - **PostgreSQL Database**: Persistent data storage
@@ -141,6 +142,23 @@ The API will be available at `http://localhost:5000`
 - **GET** `/api/zodiacSigns` - Retrieve all zodiac signs
   - Response: Array of zodiac sign objects
 
+### Households
+
+- **GET** `/api/households` - Retrieve all households
+  - Response: Array of household objects
+- **GET** `/api/households/:id` - Retrieve a specific household by ID
+  - Response: Single household object
+- **POST** `/api/households` - Create a new household
+  - Body: `{ name, round, house_id, funds, wealth, image_url }`
+  - Required: `name`, `round`, `funds`, `wealth`
+  - Response: Created household object
+- **PUT** `/api/households/:id` - Update a household
+  - Body: `{ name, round, house_id, funds, wealth, image_url }`
+  - Required: `name`, `round`, `funds`, `wealth`
+  - Response: Updated household object
+- **DELETE** `/api/households/:id` - Delete a household
+  - Response: Deleted household object with success message
+
 ## Project Structure
 
 ```
@@ -150,7 +168,8 @@ the-sims-manager-api/
 ├── package.json           # Project dependencies and scripts
 ├── routes/
 │   ├── aspirations.js     # Aspirations endpoints
-│   └── badges.js          # Badges endpoints
+│   ├── badges.js          # Badges endpoints
+│   └── households.js      # Households endpoints
 ├── .env                   # Environment variables (not in git)
 └── .gitignore             # Git ignore rules
 ```
@@ -180,6 +199,20 @@ CREATE TABLE badges (
   description TEXT,
   image_url VARCHAR(255),
   -- Add other relevant fields
+);
+```
+
+### households
+
+```sql
+CREATE TABLE households (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name VARCHAR(255) NOT NULL,
+  round INTEGER NOT NULL,
+  house_id UUID,
+  funds INTEGER NOT NULL,
+  wealth INTEGER NOT NULL,
+  image_url VARCHAR(255)
 );
 ```
 

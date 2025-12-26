@@ -8,6 +8,7 @@ import careers from './routes/careers.js';
 import chemistries from './routes/chemistries.js';
 import collegeMajors from './routes/collegeMajors.js';
 import hobbies from './routes/hobbies.js';
+import households from './routes/households.js';
 import lifetimeWants from './routes/lifetimeWants.js';
 import neighbourhoods from './routes/neighbourhoods.js';
 import zodiacSigns from './routes/zodiacSigns.js';
@@ -50,6 +51,9 @@ app.use('/api/hobbies', hobbies);
 app.use('/api/lifetimeWants', lifetimeWants);
 app.use('/api/neighbourhoods', neighbourhoods);
 app.use('/api/zodiacSigns', zodiacSigns);
+
+// entities
+app.use('/api/households', households);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
