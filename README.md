@@ -106,6 +106,41 @@ The API will be available at `http://localhost:5000`
 - **GET** `/api/badges` - Retrieve all badges (sorted by name)
   - Response: Array of badge objects
 
+### Careers
+
+- **GET** `/api/careers` - Retrieve all careers
+  - Response: Array of career objects
+
+### Chemistries
+
+- **GET** `/api/chemistries` - Retrieve all chemistries
+  - Response: Array of chemistry objects
+
+### College Majors
+
+- **GET** `/api/collegeMajors` - Retrieve all college majors
+  - Response: Array of college major objects
+
+### Hobbies
+
+- **GET** `/api/hobbies` - Retrieve all hobbies
+  - Response: Array of hobby objects
+
+### Lifetime Wants
+
+- **GET** `/api/lifetimeWants` - Retrieve all lifetime wants
+  - Response: Array of lifetime want objects
+
+### Neighbourhoods
+
+- **GET** `/api/neighbourhoods` - Retrieve all neighbourhoods
+  - Response: Array of neighbourhood objects
+
+### Zodiac Signs
+
+- **GET** `/api/zodiacSigns` - Retrieve all zodiac signs
+  - Response: Array of zodiac sign objects
+
 ## Project Structure
 
 ```
