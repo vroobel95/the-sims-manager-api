@@ -19,9 +19,30 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const result = await pool.query('SELECT * FROM households WHERE id = $1', [
-      id,
-    ]);
+
+    // Get household with joined residential lot name and assigned sims
+    const result = await pool.query(
+      `SELECT 
+        h.id,
+        h.name,
+        h.round,
+        rl.address,
+        h.funds,
+        h.wealth,
+        h.image_url,
+        COALESCE(json_agg(
+          json_build_object(
+            'id', s.id,
+            'name', s.name
+          ) ORDER BY s.name
+        ) FILTER (WHERE s.id IS NOT NULL), '[]'::json) as assigned_sims
+      FROM households h
+      LEFT JOIN residential_lots rl ON h.house_id = rl.id
+      LEFT JOIN sim s ON h.id = s.household_id
+      WHERE h.id = $1
+      GROUP BY h.id, h.name, h.round, rl.address, h.funds, h.wealth, h.image_url`,
+      [id]
+    );
 
     if (result.rows.length === 0) {
       return res.status(404).json({ message: 'Household not found' });
