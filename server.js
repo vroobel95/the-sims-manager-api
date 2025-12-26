@@ -11,6 +11,7 @@ import hobbies from './routes/hobbies.js';
 import households from './routes/households.js';
 import lifetimeWants from './routes/lifetimeWants.js';
 import neighbourhoods from './routes/neighbourhoods.js';
+import residentialLots from './routes/residentialLots.js';
 import zodiacSigns from './routes/zodiacSigns.js';
 
 const { Pool } = pkg;
@@ -54,6 +55,7 @@ app.use('/api/zodiacSigns', zodiacSigns);
 
 // entities
 app.use('/api/households', households);
+app.use('/api/residentialLots', residentialLots);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
